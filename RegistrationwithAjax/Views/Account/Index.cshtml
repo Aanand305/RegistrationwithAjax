@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RegistrationwithAjax.Models.Employee>
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+             <div class="card bg-primary">
+        <div class="card-header">
+        <div>
+            <h1 class="text-center text-primary">Uploaded Image Record</h1>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Password</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @foreach(var d in Model)
+                {
+                    <tr class="align-content-center">
+                        <td>@d.Id</td>
+                        <td>@d.Name</td>
+                        <td>@d.Email</td>
+                        <td>@d.Gender</td>
+                        <td>@d.Password</td>
+                        <td><img src="@d.ImagePath" asp-append-version="true"/></td>
+                        <td>
+                             <a class="btn btn-sm btn-info"asp-action="Update"
+                            asp-controller="Upload"asp-route-id="@d.Id"
+                            onclick="return confirm('Are you sure to Update this record ?')">Update</a>
+                            <a class="btn btn-sm btn-danger"asp-action="Delete"
+                            asp-controller="Upload"asp-route-id="@d.Id"
+                            onclick="return confirm('Are you sure to Delete this record ?')">Delete</a>
+                           
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+    </div>
+   
+    </div>
+    </div>
+    </div>
